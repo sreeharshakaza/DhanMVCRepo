@@ -1,0 +1,149 @@
+﻿@model IEnumerable<MvcDemo1.Models.UserModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+
+</table>
+
+@{
+    string number1 = "abcd";
+    string number2 = "20";
+    int number3 = number1.AsInt() + number2.AsInt();
+}
+
+<p>Total =@number3</p>
+
+<p>
+    <ul>
+        <li>InLine Html Helpers</li>
+        <li>Builtin Html Helpers
+            <ul>
+                <li>Standard Html helpers</li>
+                <li>Strongly typed html helpers</li>
+                <li>Templated html helpers</li>
+            </ul>
+        </li>
+        <li>Custom Html Helpers</li>
+    </ul>
+</p>
+
+<b><u>Inline Html Helpers</u></b>
+
+@helper ListingItems(string[] items)
+{
+    <ol>
+        @foreach(string item in items)
+        {
+            <li>@item</li>
+        }
+    </ol>
+}
+
+
+<p>
+    @ListingItems(new string[]{"Harsha", "Dhan","Siwach","Kaza","Jaipur","Hyderabad"})
+</p>
+
+<p>
+    @ListingItems(new string[]{"Harsha1", "Dhan1","Siwach1","Kaza1","Jaipur1","Hyderabad1"})
+</p>
+
+<p>
+    @ListingItems(new string[]{"Harsha1", "Dhan1","Siwach1","Kaza1","Jaipur1","Hyderabad1"})
+</p>
+
+
+<b><u>Built-in Html Helper</u></b>
+<br />
+<b>Standard Html Helpers</b>
+<br />
+@Html.TextBox("Textbox1", "val1", new { id = "TextBoxId", @class = "myTextBox"})
+<br />
+@Html.TextArea("TextArea1", "Val1", 5, 15, new { id="myTextAreaId"})
+<br />
+@Html.Hidden("Hidden1","Val1")
+<br />
+@Html.CheckBox("CheckBox1", false)
+<br />
+@Html.RadioButton("RadioButton1","Val", true)
+<br />
+@Html.DropDownList("DropDownList1", new SelectList(new []{"Male", "Female"}))
+<br />
+@Html.ListBox("MultiSelect", new MultiSelectList(new []{"Harsha", "Dhan", "Jaipur", "Hyderabad"}))
+
+<br />
+<br />
+<b>Strogly Typed Html Helpers</b>
+<br />
+<br />
+<b>Templated Html Helpers</b>
+@Html.Display("Firstname")
+@Html.Editor("Display2")
+<br />
+<br />
+<b>Custom Html Helpers</b>
+
+@using MvcDemo1.Helpers
+@ImageHelper.RenderImage()
+
+---------------------------------------------------------------------------
+<br />
+<p>Partial View</p>

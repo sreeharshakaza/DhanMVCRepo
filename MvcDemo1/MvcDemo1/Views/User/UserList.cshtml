@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>UserList</h2>
+
+@Html.Partial("_UserPartial")
+@{ Html.RenderPartial("_UserPartial");}
+
+@{ Html.RenderAction("PartialUserList"); }
+
+<p>Html Partial</p>
+1.It renders partial view content
+2.It returns view content as html string
+3.It can be used for storing view data and manipulating
+
+<p>Html Render Partial</p> 
+1.It renders partial view content
+2.It doesn't return anything but directly writes html content to reponse object
+3.It is faster than html partial
+
+<p>
+1.It renders partial view content
+2.It doesn't return anything but directly writes html content to reponse object
+3.It is faster than html partial
+4.It is used when view page has to be bounded with multiple models
+</p>
